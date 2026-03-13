@@ -1,73 +1,69 @@
-# house_price_mlops_production
-# 🏠 RealEstateAI: Global House Price Predictor with MLOps.
+# 💻 LaptopAI: End-to-End MLOps Pipeline for Price Estimation
 
-> **A high-performance regression engine for California real estate, featuring multi-currency support and MLflow tracking.**
+> **A robust MLOps project demonstrating model tracking, containerization, and interactive serving for laptop market valuation.**
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![MLflow](https://img.shields.io/badge/MLflow-Tracking-0194E2?style=for-the-badge&logo=mlflow&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Container-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Railway](https://img.shields.io/badge/Deployment-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 
-## 🌟 Executive Summary
+## 🌟 Project Overview
 
-**RealEstateAI** is an advanced property valuation tool that leverages the **California Housing Dataset** to provide instant market estimates. 
+**LaptopAI** is an MLOps-centric application that predicts the market value of laptops based on core technical specifications. 
 
-Designed for the global market, this application allows users to toggle between multiple currencies (USD, INR, EUR, GBP) while maintaining a robust machine learning backend. By using **MLflow** for experiment versioning and **Docker** for standardized deployment, this project demonstrates a professional-grade MLOps workflow suitable for real-world real estate tech.
+This project implements a complete lifecycle:
+1.  **Data Generation & Training:** Automated training script with synthetic data generation.
+2.  **Experiment Tracking:** Deep integration with **MLflow** to monitor model performance and versioning.
+3.  **Interactive Deployment:** A premium **Streamlit** dashboard for real-time inference.
+4.  **Containerization:** Fully dockerized for seamless deployment across any infrastructure (Local, Railway, AWS).
 
 ## 🚀 Key Features
 
-* **🌍 Multi-Currency Support:** Real-time conversion logic allowing users to view property values in **INR (₹)**, **USD ($)**, **EUR (€)**, and **GBP (£)**.
-* **📊 Feature Impact Analysis:** Interactive Plotly charts that visualize how Median Income, House Age, and Room Count affect the final price.
-* **🔄 MLflow Lifecycle:** Every model training run is logged with its R² score and parameters, ensuring full transparency in the ML pipeline.
-* **🐳 Containerized Logic:** Encapsulated in a **Docker** container to ensure consistent performance from local development to Railway cloud hosting.
-* **📈 Dynamic UI:** A reactive **Streamlit** dashboard that updates prices and charts instantly based on user input.
+*   **🔄 MLflow Lifecycle Tracking:** Logs every training run, capturing R² scores and MSE metrics automatically.
+*   **🐳 Reproducible Environment:** Docker configuration ensures "it works on my machine" translates to "it works everywhere."
+*   **📈 Dynamic Visualization:** Uses **Plotly** to visualize how different components (RAM, CPU, etc.) impact the final price.
+*   **💎 Premium UI:** A modern, dark-themed dashboard with responsive elements and professional aesthetics.
+*   **🤖 Random Forest Engine:** Utilizes an optimized Random Forest Regressor for reliable price estimations.
 
-## 🎤 Global Currency Guide
+## 📊 MLOps Pipeline
 
-The system allows users to switch display modes via the sidebar. The underlying ML model predicts in USD, which is then dynamically converted:
+The project follows a standard production-ready workflow:
 
-| Currency | Symbol | Primary Use Case |
-| :--- | :--- | :--- |
-| **USD** | $ | Standard benchmark for California Real Estate. |
-| **INR** | ₹ | Localized valuation for Indian investors. |
-| **EUR** | € | European market compatibility. |
-| **GBP** | £ | United Kingdom market compatibility. |
-
-## 🛠️ System Architecture
-
-The application follows a modular architecture optimized for CI/CD:
-1.  **Training Engine (`train.py`):** Trains a Random Forest Regressor and registers the model in the **MLflow** database.
-2.  **Conversion Engine:** A dynamic logic layer in `app.py` that handles international currency exchange math.
-3.  **Cloud Layer:** Fully automated deployment on **Railway** using a custom **Dockerfile**.
-
-
-
-## ScreenShot:
-
-<img width="1919" height="1079" alt="RealEstate AI Screenshot" src="https://github.com/user-attachments/assets/your-new-screenshot-link" />
-
+| Component | Responsibility |
+| :--- | :--- |
+| **`train.py`** | Handles data ingestion, model training, and MLflow logging. |
+| **`app.py`** | Serves the model via a high-performance Streamlit UI. |
+| **`Dockerfile`** | Packages the entire environment into a lightweight image. |
+| **MLflow Registry** | Houses the serialized model artifacts and performance metadata. |
 
 ## ⚙️ Installation & Setup
 
-### 1. Clone the Repository
-```bash
-git clone [https://github.com/your-username/house_price_mlops_production.git](https://github.com/your-username/house_price_mlops_production.git)
-cd house_price_mlops_production
-```
-### 2. Install Dependencies
-```bash
-pip install streamlit pandas numpy plotly mlflow scikit-learn
-```
-### 3. Running the Project
+### 1. Setup Environment
+Ensure you have Python 3.9+ installed. It is recommended to use a virtual environment.
 
-Follow these steps to initialize the MLOps environment:
+```bash
+# Install dependencies
+pip install -r requirements.txt
+```
 
-Step 1: Train & Log Model
+### 2. Training the Model
+Run the training script to generate the MLflow tracking data and model artifacts.
 ```bash
 python train.py
 ```
-Step 2: Launch Streamlit UI
+
+### 3. Launch the Application
+Start the Streamlit dashboard to interact with the model.
 ```bash
-streamlit run app.py
+python -m streamlit run app.py
 ```
- By Vinothini K
+
+## 🐳 Running with Docker
+To run the containerized version:
+```bash
+docker build -t laptop-ai-mlops .
+docker run -p 8080:8080 laptop-ai-mlops
+```
+
+---
+**Developed for MLOps Semester Project assignment**
